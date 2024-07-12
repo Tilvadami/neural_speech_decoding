@@ -492,7 +492,8 @@ class Model(nn.Module):
                 (diff_dim(rec_amp, axis=2) - diff_dim(spec_amp, axis=2)).abs().mean()
             )
             if tracker is not None:
-                tracker.update(dict({"Lae_delta_time" + suffix: Lae_delta_time}))
+                # tracker.update(dict({"Lae_delta_time" + suffix: Lae_delta_time}))
+                tracker.update(dict({"Lae_delta_time" + suffix: loss_delta_time}))
         else:
             loss_delta_time = torch.tensor(0.0)
         if self.delta_freq:
